@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EUR/USD Signals</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #1e1e1e; color: #f5f5f5; margin:0; padding:0;}
+        .container { padding: 10px; }
+        h1 { text-align: center; }
+        .opportunity { border: 1px solid #444; padding: 10px; margin: 5px 0; border-radius: 8px; }
+        .score { font-weight: bold; color: #00ff00; }
+        .zone { font-size: 0.9em; color: #888; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>EUR/USD Opportunities</h1>
+        {% for opp in opportunities %}
+            <div class="opportunity">
+                <div>Timeframe: {{ opp.timeframe }}</div>
+                <div>Pattern: {{ opp.pattern }}</div>
+                {% if opp.zone %}
+                    <div class="zone">Zone: {{ opp.zone.lower }} – {{ opp.zone.upper }}</div>
+                {% endif %}
+                <div>Score: <span class="score">{{ opp.score }}</span></div>
+                <div>SL: {{ opp.sl }} | TP: {{ opp.tp }}</div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
